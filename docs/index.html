@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tienda de Ropa Usada</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: #f6f6f6;
+            padding: 20px;
+        }
+
+        .producto {
+            background: #fff;
+            padding: 15px;
+            margin-bottom: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+        }
+
+        .galeria {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            border-radius: 12px;
+        }
+
+        .galeria img {
+            width: 100%;
+            display: none;
+        }
+
+        .foto-activa {
+            /* Mantiene la corrección de display */
+            display: block !important; 
+        }
+
+        .controles {
+            text-align: center;
+            margin-top: 8px;
+        }
+
+        .btn-control {
+            background: #ddd;
+            border: none;
+            padding: 6px 10px;
+            border-radius: 6px;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+
+        .btn-comprar {
+            display: block;
+            background: #000;
+            color: #fff;
+            text-align: center;
+            padding: 12px;
+            border-radius: 8px;
+            text-decoration: none;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 style="text-align:center;">Ropa de Juan & Male</h1>
+
+    <div class="producto">
+        <div class="galeria" id="galeria1">
+            <img src="img/foto1-1.jpg" class="foto-activa" alt="Short de jean vista frontal">
+            <img src="img/foto1-2.jpg" alt="Short de jean vista trasera">
+        </div>
+
+        <div class="controles">
+            <button class="btn-control" onclick="cambiarFoto('galeria1', -1)">◀</button>
+            <button class="btn-control" onclick="cambiarFoto('galeria1', 1)">▶</button>
+        </div>
+
+        <h3>Short de jean</h3>
+        <p>Talle M — Excelente estado.</p>
+
+        <a href="https://wa.me/5493516501736?text=Estoy%20interesado%20en%20el%20short%20de%20jean" class="btn-comprar">Comprar</a>
+    </div>
+
+    <div class="producto">
+        <div class="galeria" id="galeria2">
+            <img src="img/foto2-1.jpg" class="foto-activa" alt="Short negro vista frontal">
+            <img src="img/foto2-2.jpg" alt="Short negro detalle">
+        </div>
+
+        <div class="controles">
+            <button class="btn-control" onclick="cambiarFoto('galeria2', -1)">◀</button>
+            <button class="btn-control" onclick="cambiarFoto('galeria2', 1)">▶</button>
+        </div>
+
+        <h3>Short negro</h3>
+        <p>Talle L — Muy poco uso.</p>
+
+        <a href="https://wa.me/5493516501736?text=Estoy%20interesado%20en%20el%20short%20negro" class="btn-comprar">Comprar</a>
+    </div>
+
+    <div class="producto">
+        <div class="galeria" id="galeria3">
+            <img src="img/foto3-1.jpg" class="foto-activa" alt="Camisa a cuadros vista frontal">
+            <img src="img/foto3-2.jpg" alt="Camisa a cuadros detalle">
+        </div>
+
+        <div class="controles">
+            <button class="btn-control" onclick="cambiarFoto('galeria3', -1)">◀</button>
+            <button class="btn-control" onclick="cambiarFoto('galeria3', 1)">▶</button>
+        </div>
+
+        <h3>Camisa a Cuadros</h3>
+        <p>Talle S — Marca Zara. Vintage.</p>
+
+        <a href="https://wa.me/5493516501736?text=Estoy%20interesado%20en%20la%20camisa%20a%20cuadros" class="btn-comprar">Comprar</a>
+    </div>
+
+    <div class="producto">
+        <div class="galeria" id="galeria4">
+            <img src="img/foto4-1.jpg" class="foto-activa" alt="Vestido de verano vista completa">
+            <img src="img/foto4-2.jpg" alt="Vestido de verano detalle de tela">
+        </div>
+
+        <div class="controles">
+            <button class="btn-control" onclick="cambiarFoto('galeria4', -1)">◀</button>
+            <button class="btn-control" onclick="cambiarFoto('galeria4', 1)">▶</button>
+        </div>
+
+        <h3>Vestido de Verano</h3>
+        <p>Talle M — Nuevo, sin etiqueta.</p>
+
+        <a href="https://wa.me/5493516501736?text=Estoy%20interesado%20en%20el%20vestido%20de%20verano" class="btn-comprar">Comprar</a>
+    </div>
+
+    <script>
+        function cambiarFoto(idGaleria, direccion) {
+            const galeria = document.getElementById(idGaleria);
+            const fotos = galeria.getElementsByTagName('img');
+            let indiceActual = 0;
+
+            for (let i = 0; i < fotos.length; i++) {
+                if (fotos[i].classList.contains('foto-activa')) {
+                    indiceActual = i;
+                    fotos[i].classList.remove('foto-activa');
+                    break;
+                }
+            }
+
+            let nuevoIndice = indiceActual + direccion;
+
+            if (nuevoIndice < 0) nuevoIndice = fotos.length - 1;
+            if (nuevoIndice >= fotos.length) nuevoIndice = 0;
+
+            fotos[nuevoIndice].classList.add('foto-activa');
+        }
+    </script>
+
+</body>
+</html>
